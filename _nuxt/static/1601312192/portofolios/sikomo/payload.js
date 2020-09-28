@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/portofolios/sikomo", {data:[{}],fetch:[],mutations:void 0});
