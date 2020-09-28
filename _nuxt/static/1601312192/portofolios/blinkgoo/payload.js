@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/portofolios/blinkgoo", {data:[{}],fetch:[],mutations:void 0});
