@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/portfolios/mymovo", {data:[{}],fetch:[],mutations:void 0});
