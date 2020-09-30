@@ -153,21 +153,21 @@ export default {
           type: 'Full time',
           time: 'Jan 2019 - Sep 2020',
           position: 'Web Developer',
-          desc: 'A website that helps users to search and compare products, get the best promos and discounts for products from various leading e-commerce or marketplaces. I developed the blinkgoo website from scratch, initially developing full stack then focused more on front end development. I led the front end team in implementing the design of the UI / UX team and developing the website for desktop and mobile web versions. I was responsible for website performance in terms of load speed, responsiveness and accuracy of design implementation.'
+          desc: 'I developed the blinkgoo website from scratch, initially developing full stack then focused more on front end development. I led the front end team in implementing the design of the UI / UX team and developing the website for desktop and mobile web versions. I was responsible for website performance in terms of load speed, responsiveness and accuracy of design implementation.'
         },
         {
           company: 'PT Astra Graphia Information Technology (AGIT)',
           type: 'Intern',
           time: 'Jun 2018 - Aug 2018',
           position: 'Software Engineer - Full Stack',
-          desc: 'I was assigned to the team that developed MyMovo, a B2B web platform for logistics service providers to manage express delivery. I developed delivery dipatcher feature which includes courier assignment page, vendor assignment page, and delivery manifest creation page. The development process started from creating a document about the feature requirements, creating a mockup, developing the front end, then the back end.'
+          desc: 'I developed delivery dipatcher feature which includes courier assignment page, vendor assignment page, and delivery manifest creation page. The development process started from creating a document about the feature requirements, creating a mockup, developing the front end, then the back end.'
         },
         {
           company: 'Sikomo',
           type: 'Intern',
           time: 'Jun 2017 - Aug 2017',
           position: 'Software Engineer - Web and Android',
-          desc: 'A Jakarta-Bandung shuttle bus booking application. My job as an intern at Sikomo began with developing the front end of the production web dashboard, then moving on to developing the Android app until the end. Here I learned more about javascript framework and connecting the user interface with back end services.'
+          desc: 'My job as an intern at Sikomo began with developing the front end of the production web dashboard, then moving on to developing the Android app until the end. Here I learned more about javascript framework and connecting the user interface with back end services.'
         }
       ],
       portfolios
