@@ -9,19 +9,18 @@
         style="cursor: pointer;"
         @click="$router.go(-1)"
       >
-      <h1 class="title" style="text-align: center;">
+      <h1 style="text-align: center; font-weight: 500; margin-bottom: 10px;">
         <a v-if="portfolio.href" :href="portfolio.href" target="_blank" rel="noopener noreferrer">
           {{ portfolio.fullName }}
         </a>
         <span v-else>{{ portfolio.fullName }}</span>
       </h1>
       <h2 class="subtitle" style="font-size: 20px;">
-        {{ portfolio.longdesc }}
+        {{ portfolio.description }}
       </h2>
-      Screenshots:
       <div v-if="portfolio.screenshots.length">
         <div v-for="(ss, i) in portfolio.screenshots" :key="i" class="screenshots">
-          <div style="font-weight: 300; margin-bottom: 10px;">
+          <div style="font-weight: 700; margin-bottom: 10px;">
             {{ ss.title }}
           </div>
           <div class="gallery-wrapper">
@@ -382,7 +381,7 @@ export default {
 
 .gallery figure {
   display: inline-block;
-  padding: 10px;
+  padding: 25px;
 }
 
 .col-3 {
@@ -394,12 +393,24 @@ export default {
 }
 
 @media (max-width: 960px) {
+  .gallery figure {
+    padding: 20px;
+  }
+
   .col-3 {
     max-width: 50%;
   }
 }
 
 @media (max-width: 600px) {
+  .section {
+    padding: 40px;
+  }
+
+  .gallery figure {
+    padding: 10px;
+  }
+
   .col-2 {
     max-width: 100%;
   }

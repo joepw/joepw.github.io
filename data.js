@@ -3,7 +3,6 @@ export const portfolios = [
     name: 'blinkgoo',
     fullName: 'Blinkgoo.com',
     description: 'A website that helps users to search and compare products, get the best promos and discounts for products from various leading e-commerce or marketplaces.',
-    longdesc: 'A website that helps users to search and compare products, get the best promos and discounts for products from various leading e-commerce or marketplaces.',
     cover: 'portfolio/blinkgoo/cover.png',
     url: '/portfolios/blinkgoo',
     href: 'https://www.blinkgoo.com',
@@ -51,11 +50,6 @@ export const portfolios = [
             dimension: '1360x768'
           },
           {
-            src: '../../portfolio/blinkgoo/desktop/top_discount.png',
-            caption: 'Top Discount Products Page',
-            dimension: '1360x768'
-          },
-          {
             src: '../../portfolio/blinkgoo/desktop/comparison.png',
             caption: 'Comparison Products Page',
             dimension: '1360x768'
@@ -83,11 +77,6 @@ export const portfolios = [
           {
             src: '../../portfolio/blinkgoo/desktop/login.png',
             caption: 'Login Page',
-            dimension: '1360x768'
-          },
-          {
-            src: '../../portfolio/blinkgoo/desktop/signup.png',
-            caption: 'Signup Page',
             dimension: '1360x768'
           },
           {
@@ -119,11 +108,6 @@ export const portfolios = [
           {
             src: '../../portfolio/blinkgoo/mobile/product_compare.png',
             caption: 'Product Comparison Page',
-            dimension: '375x812'
-          },
-          {
-            src: '../../portfolio/blinkgoo/mobile/top_discount.png',
-            caption: 'Top Discount Products Page',
             dimension: '375x812'
           },
           {
@@ -172,11 +156,6 @@ export const portfolios = [
             dimension: '375x812'
           },
           {
-            src: '../../portfolio/blinkgoo/mobile/signup.png',
-            caption: 'Signup Page',
-            dimension: '375x812'
-          },
-          {
             src: '../../portfolio/blinkgoo/mobile/edit_profile.png',
             caption: 'Edit Profile Page',
             dimension: '375x812'
@@ -189,7 +168,6 @@ export const portfolios = [
     name: 'mymovo',
     fullName: 'MyMovo Web Application',
     description: 'A B2B web platform for logistics service providers to manage express delivery. Product of PT Astra Graphia Information Technology (AGIT).',
-    longdesc: 'A B2B web platform for logistics service providers to manage express delivery. Product of PT Astra Graphia Information Technology (AGIT).',
     cover: '',
     url: '/portfolios/mymovo',
     href: '',
@@ -216,8 +194,7 @@ export const portfolios = [
   {
     name: 'sikomo',
     fullName: 'Sikomo Android App',
-    description: 'a Jakarta-Bandung shuttle bus booking application.',
-    longdesc: 'a Jakarta-Bandung shuttle bus booking application.',
+    description: 'A Jakarta-Bandung shuttle bus booking application.',
     cover: 'portfolio/sikomo/cover.png',
     url: '/portfolios/sikomo',
     href: '',
@@ -288,8 +265,7 @@ export const portfolios = [
   {
     name: 'sikomo-dashboard',
     fullName: 'Sikomo Production Web Dashboard',
-    description: 'a web dashboard for managing users, partners, bookings, and payments of Sikomo (Jakarta-Bandung shuttle bus booking application).',
-    longdesc: 'a web dashboard for managing users, partners, bookings, and payments of Sikomo (Jakarta-Bandung shuttle bus booking application).',
+    description: 'A web dashboard for managing users, partners, bookings, and payments of Sikomo (Jakarta-Bandung shuttle bus booking application).',
     cover: 'portfolio/sikomo-dashboard/cover.png',
     url: '/portfolios/sikomo-dashboard',
     href: '',
