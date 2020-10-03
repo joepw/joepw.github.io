@@ -10,7 +10,7 @@
             Hi! I am Jonathan, a web developer.
           </h1>
           <h2 class="subtitle">
-            I am currently focusing on front end development. Experienced building web applications using Vue. Interested in developing web apps that are good looking, easy to use, and have high performance.
+            I am currently focusing on front end development. Passionate about creating high quality user interfaces that are mobile friendly, easy to use, and have high performance.
           </h2>
           <div style="padding: 16px 0;">
             <a
@@ -72,7 +72,7 @@
           <div>
             {{ experience.position }}
           </div>
-          <div>
+          <div style="margin-top: 10px;">
             {{ experience.desc }}
           </div>
         </div>
@@ -157,14 +157,14 @@ export default {
         },
         {
           company: 'PT Astra Graphia Information Technology (AGIT)',
-          type: 'Intern',
+          type: 'Internship',
           time: 'Jun 2018 - Aug 2018',
           position: 'Software Engineer - Full Stack',
-          desc: 'I developed delivery dipatcher feature which includes courier assignment page, vendor assignment page, and delivery manifest creation page. The development process started from creating a document about the feature requirements, creating a mockup, developing the front end, then the back end.'
+          desc: 'I developed delivery dipatcher feature which includes courier assignment page, vendor assignment page, and delivery manifest creation page. The development process started from creating documents about the feature requirements, creating website wireframes, developing the front end, then the back end.'
         },
         {
           company: 'Sikomo',
-          type: 'Intern',
+          type: 'Internship',
           time: 'Jun 2017 - Aug 2017',
           position: 'Software Engineer - Web and Android',
           desc: 'My job as an intern at Sikomo began with developing the front end of the production web dashboard, then moving on to developing the Android app until the end. Here I learned more about javascript framework and connecting the user interface with back end services.'
