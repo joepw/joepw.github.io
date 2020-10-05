@@ -136,7 +136,7 @@ export default {
       skills: [
         {
           label: 'Languages',
-          items: ['Javascript', 'HTML', 'CSS', 'Go', 'Java', 'MySQL']
+          items: ['Javascript', 'HTML', 'CSS', 'Go', 'Java', 'SQL']
         },
         {
           label: 'Frameworks',
