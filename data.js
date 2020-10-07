@@ -5,7 +5,7 @@ export const portfolios = [
     description: 'A website that helps users to search and compare products, get the best promos and discounts for products from various leading e-commerce or marketplaces.',
     cover: 'portfolio/blinkgoo/cover.png',
     url: '/portfolios/blinkgoo',
-    href: 'https://www.blinkgoo.com',
+    href: '',
     tech: [
       {
         name: 'Vue.js',
@@ -271,7 +271,7 @@ export const portfolios = [
     href: '',
     tech: [
       {
-        name: 'Angular 4',
+        name: 'Angular',
         imgSrc: 'tech/angular.svg'
       },
       {
