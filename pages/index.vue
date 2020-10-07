@@ -36,7 +36,7 @@
       </h2>
       <div class="section-content">
         <p style="margin-bottom: 20px; font-size: 18px;">
-          I have been <b>building web applications</b> for almost 2 years. Since I graduated from the <b>Universitas Indonesia</b> as a computer science bachelor in 2019, I have explored more about web development through the development of blinkgoo.com site. I love developing web apps that are responsive and can run on mobile devices because users can use them with any device they want, anywhere and anytime. I feel satisfied when I provide a good experience to users through the app I have developed.
+          I have been <b>building web applications</b> for almost 2 years. Since I graduated from the <b>Universitas Indonesia</b> as a computer science bachelor in 2019, I have explored more about web development and web technology. I love developing web apps that are responsive and can run on mobile devices because users can use them with any device they want, anywhere and anytime. I feel satisfied when I provide a good experience to users through the app I have developed.
         </p>
       </div>
     </section>

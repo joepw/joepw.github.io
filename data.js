@@ -1,7 +1,7 @@
 export const portfolios = [
   {
     name: 'blinkgoo',
-    fullName: 'Blinkgoo.com',
+    fullName: 'Blinkgoo Website',
     description: 'A website that helps users to search and compare products, get the best promos and discounts for products from various leading e-commerce or marketplaces.',
     cover: 'portfolio/blinkgoo/cover.png',
     url: '/portfolios/blinkgoo',
