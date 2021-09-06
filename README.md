@@ -1,4 +1,4 @@
-# joepw
+# My Personal Portofolio website [joepw.com](https://joepw.com)
 
 ## Build Setup
 
@@ -13,8 +13,12 @@ $ npm run dev
 $ npm run build
 $ npm run start
 
-# generate static project
+# generate static project and launch
 $ npm run generate
+$ npm run start
+
+# deploy
+$ npm run deploy
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

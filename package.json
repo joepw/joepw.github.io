@@ -10,7 +10,7 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "predeploy": "nuxt generate",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist --dotfiles=true"
   },
   "dependencies": {
     "core-js": "^3.17.2",
