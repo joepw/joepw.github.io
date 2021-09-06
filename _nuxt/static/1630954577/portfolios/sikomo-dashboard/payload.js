@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/portfolios/sikomo-dashboard", {data:[{}],fetch:{},mutations:void 0});
