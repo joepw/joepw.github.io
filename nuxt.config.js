@@ -2,6 +2,10 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
+  router: {
+    base: '/joepw.com/'
+  },
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'Jonathan Prasetya | Web Developer',
