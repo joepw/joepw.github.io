@@ -1,4 +1,4 @@
-# My Personal Portofolio website [joepw.com](https://joepw.com)
+# My Personal Portofolio website [joepw.github.io](https://joepw.github.io)
 
 ## Build Setup
 
