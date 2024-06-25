@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/portfolios/topads", {data:[{}],fetch:{},mutations:void 0});
