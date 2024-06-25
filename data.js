@@ -1,8 +1,110 @@
 export const portfolios = [
   {
+    name: 'topads',
+    fullName: 'TopAds',
+    description: 'An advertising tool within Tokopedia that allows sellers to manage and optimize their ad campaigns, improving the visibility and performance of their products in the marketplace.',
+    cover: 'portfolio/topads/cover.png',
+    url: '/portfolios/topads',
+    href: '',
+    tech: [
+      {
+        name: 'React',
+        imgSrc: 'tech/react.svg'
+      },
+      {
+        name: 'Emotion',
+        imgSrc: 'tech/emotion.png'
+      },
+      {
+        name: 'Koa',
+        imgSrc: 'tech/koa.png'
+      }
+    ],
+    screenshots: [
+      {
+        title: 'TopAds Dashboard',
+        preview: 'medium',
+        screens: [
+          {
+            src: '/portfolio/topads/desktop/homepage.png',
+            caption: 'Dashboard Home Page',
+            dimension: '1391x1235'
+          },
+          {
+            src: '/portfolio/topads/desktop/iklan_toko.png',
+            caption: 'Shop Ads Dashboard',
+            dimension: '1391x1416'
+          },
+          {
+            src: '/portfolio/topads/desktop/iklan_group.png',
+            caption: 'Product Ads Dashboard',
+            dimension: '1391x1113'
+          },
+          {
+            src: '/portfolio/topads/desktop/wawasan_brand.png',
+            caption: 'Brandpedia Dashboard',
+            dimension: '1496x1068'
+          },
+          {
+            src: '/portfolio/topads/desktop/iklan_produk_form.png',
+            caption: 'Product Ads Creation Form',
+            dimension: '1395x2176'
+          },
+          {
+            src: '/portfolio/topads/desktop/iklan_toko_form.png',
+            caption: 'Shop Ads Creation Form',
+            dimension: '1395x2197'
+          }
+        ]
+      },
+      {
+        title: 'TopAds on Tokopedia Marketplace - Desktop',
+        preview: 'medium',
+        screens: [
+          {
+            src: '/portfolio/topads/desktop/PDP_ads.png',
+            caption: 'Product Detail Page Ads',
+            dimension: '1496x911'
+          },
+          {
+            src: '/portfolio/topads/desktop/SRP_ads.png',
+            caption: 'Search Result Page Ads',
+            dimension: '1496x911'
+          }
+        ]
+      },
+      {
+        title: 'TopAds on Tokopedia Marketplace - Mobile Web',
+        preview: 'small',
+        screens: [
+          {
+            src: '/portfolio/topads/lite/category_ads.png',
+            caption: 'Category page Ads',
+            dimension: '1170x2532'
+          },
+          {
+            src: '/portfolio/topads/lite/homepage_ads.png',
+            caption: 'Homepage Ads',
+            dimension: '1170x2532'
+          },
+          {
+            src: '/portfolio/topads/lite/SRP_ads.png',
+            caption: 'Search Result Page Ads',
+            dimension: '1170x2532'
+          },
+          {
+            src: '/portfolio/topads/lite/SRP_ads_2.png',
+            caption: 'Search Result Page Ads',
+            dimension: '1170x2532'
+          }
+        ]
+      }
+    ]
+  },
+  {
     name: 'blinkgoo',
-    fullName: 'Blinkgoo Website',
-    description: 'A website that helps users to search and compare products, get the best promos and discounts for products from various leading e-commerce or marketplaces.',
+    fullName: 'Blinkgoo',
+    description: 'A platform that enables users to search and compare products, and find the best promotions and discounts from various leading e-commerce sites and marketplaces.',
     cover: 'portfolio/blinkgoo/cover.png',
     url: '/portfolios/blinkgoo',
     href: '',
@@ -167,7 +269,7 @@ export const portfolios = [
   {
     name: 'mymovo',
     fullName: 'MyMovo Web Application',
-    description: 'A B2B web platform for logistics service providers to manage express delivery. Product of PT Astra Graphia Information Technology (AGIT).',
+    description: 'A B2B web platform designed for logistics service providers to manage express delivery services. This product is developed by PT Astra Graphia Information Technology (AGIT).',
     cover: '',
     url: '/portfolios/mymovo',
     href: '',
@@ -194,7 +296,7 @@ export const portfolios = [
   {
     name: 'sikomo',
     fullName: 'Sikomo Android App',
-    description: 'A Jakarta-Bandung shuttle bus booking application.',
+    description: 'An application for booking shuttle bus services between Jakarta and Bandung.',
     cover: 'portfolio/sikomo/cover.png',
     url: '/portfolios/sikomo',
     href: '',
@@ -265,7 +367,7 @@ export const portfolios = [
   {
     name: 'sikomo-dashboard',
     fullName: 'Sikomo Production Web Dashboard',
-    description: 'A web dashboard for managing users, partners, bookings, and payments of Sikomo (Jakarta-Bandung shuttle bus booking application).',
+    description: 'A comprehensive web dashboard for managing users, partners, bookings, and payments for the Sikomo Jakarta-Bandung shuttle bus service.',
     cover: 'portfolio/sikomo-dashboard/cover.png',
     url: '/portfolios/sikomo-dashboard',
     href: '',
@@ -281,7 +383,7 @@ export const portfolios = [
     ],
     screenshots: [
       {
-        title: 'Desktop Web (Numbers are randomized)',
+        title: 'Desktop Web',
         preview: 'medium',
         screens: [
           {

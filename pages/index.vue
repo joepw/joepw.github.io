@@ -5,12 +5,12 @@
         <div class="profile-photo">
           <img src="profile-photo.jpg" alt="Jonathan Prasetya Wijaya" class="circle" height="150" width="150">
         </div>
-        <div style="max-width: 700px;">
+        <div style="max-width: 740px;">
           <h1 class="title">
-            Hi! I am Jonathan, a web developer.
+            Hi! I'm Jonathan, a Front-End Web Developer.
           </h1>
           <h2 class="subtitle">
-            I am currently focusing on front end development. Passionate about creating high quality user interfaces that are mobile friendly, easy to use, and have high performance.
+            I focus on creating high-quality, user-friendly websites that perform seamlessly. With commitment to excellence, I transform ideas into engaging digital experiences. Let's create something amazing together!
           </h2>
           <div style="padding: 16px 0;">
             <a
@@ -36,13 +36,16 @@
       </h2>
       <div class="section-content">
         <p style="margin-bottom: 20px; font-size: 18px;">
-          I have been <b>building web applications</b> for almost 2 years. Since I graduated from the <b>Universitas Indonesia</b> as a computer science bachelor in 2019, I have explored more about web development and web technology. I love developing web apps that are responsive and can run on mobile devices because users can use them with any device they want, anywhere and anytime. I feel satisfied when I provide a good experience to users through the app I have developed.
+          I am Jonathan, a web developer from Jakarta, Indonesia, with a degree in Computer Science from Universitas Indonesia. My fascination with web technology stems from its versatility in serving both desktop and mobile environments. I take pride in creating user interfaces that are not only visually appealing but also highly functional and helpful for users.
+        </p>
+        <p style="font-size: 18px;">
+          With over 5 years of experience in the web development industry, I have had the opportunity to work on several innovative projects, collaborating with talented professionals along the way. These projects have ranged from developing intuitive user interfaces to enhancing user experiences based on feedback and best practices.
         </p>
       </div>
     </section>
     <section class="section appear">
       <h2 class="section-title">
-        Skills
+        Skillsets
       </h2>
       <div class="section-content">
         <div style="display: flex; justify-content: space-around; flex-wrap: wrap">
@@ -136,38 +139,45 @@ export default {
       skills: [
         {
           label: 'Languages',
-          items: ['Javascript', 'HTML', 'CSS', 'Go', 'Java', 'SQL']
+          items: ['HTML', 'CSS', 'Javascript', 'Typescript', 'GraphQL', 'NRQL']
         },
         {
-          label: 'Frameworks',
-          items: ['Vue.js', 'Nuxt.js', 'Vuetify', 'Echo (Go)']
+          label: 'Frameworks/Libraries',
+          items: ['React', 'Emotion', 'Jest', 'Playwright', 'Vue', 'Nuxt', 'Ant Design', 'Storybook', 'Koa', 'Fastify']
         },
         {
           label: 'Tools',
-          items: ['Git', 'Google Lighthouse', 'Chrome DevTools', 'Postman', 'Android Studio']
+          items: ['Git/Github', 'Chrome DevTools', 'Figma', 'Jira', 'Slack', 'Trello', 'Confluence', 'New Relic', 'GSuite', 'Consul', 'Jenkins']
         }
       ],
       experiences: [
+        {
+          company: 'Tokopedia',
+          type: 'Full time',
+          time: 'Jan 2021 - Jun 2024',
+          position: 'Software Engineer - Web Platform',
+          desc: 'contributed to the development of the TopAds dashboard, an advertising tool for sellers to manage and optimize their ad campaigns. I implemented features and functionality to enhance the dashboard\'s capabilities and developed features for ads placement within the Tokopedia marketplace, ensuring seamless integration and improving ad visibility and performance. Collaborated with cross-functional teams to deliver efficient and reliable solutions.'
+        },
         {
           company: 'Blinkgoo',
           type: 'Full time',
           time: 'Jan 2019 - Sep 2020',
           position: 'Web Developer',
-          desc: 'I developed the blinkgoo website from scratch, initially developing full stack then focused more on front end development. I led the front end team in implementing the design of the UI / UX team and developing the website for desktop and mobile web versions. I was responsible for website performance in terms of load speed, responsiveness and accuracy of design implementation.'
+          desc: 'Developed the Blinkgoo website from scratch, initially handling full-stack development before focusing exclusively on the front-end. Led the front-end team in implementing UI/UX designs and developing the website for both desktop and mobile web versions. Ensured optimal website performance by focusing on load speed, responsiveness, and accurate design implementation.'
         },
         {
           company: 'PT Astra Graphia Information Technology (AGIT)',
           type: 'Internship',
           time: 'Jun 2018 - Aug 2018',
           position: 'Software Engineer - Full Stack',
-          desc: 'I developed delivery dipatcher feature which includes courier assignment page, vendor assignment page, and delivery manifest creation page. The development process started from creating documents about the feature requirements, creating website wireframes, developing the front end, then the back end.'
+          desc: 'Developed key features including the courier assignment page, vendor assignment page, and delivery manifest creation page. The process involved creating detailed feature requirement documents, designing website wireframes, and developing both the front-end and back-end components.'
         },
         {
           company: 'Sikomo',
           type: 'Internship',
           time: 'Jun 2017 - Aug 2017',
           position: 'Software Engineer - Web and Android',
-          desc: 'My job as an intern at Sikomo began with developing the front end of the production web dashboard, then moving on to developing the Android app until the end. Here I learned more about javascript framework and connecting the user interface with back end services.'
+          desc: 'Began my internship by developing the front-end of the production web dashboard, later transitioning to developing the Android app. Gained in-depth experience with JavaScript frameworks and learned to seamlessly connect user interfaces with back-end services.'
         }
       ],
       portfolios

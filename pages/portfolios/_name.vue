@@ -41,9 +41,9 @@
                 </figcaption>
               </figure>
             </div>
-            <div class="show_more_gradient" />
+            <div v-if="ss.screens.length > 2" class="show_more_gradient" />
           </div>
-          <div class="show_more button" @click="showMore(i)">
+          <div v-if="ss.screens.length > 2" class="show_more button" @click="showMore(i)">
             Show More
           </div>
           <div class="show_less button" @click="showMore(i)">
@@ -119,7 +119,7 @@ import { portfolios } from '~/data.js'
 
 export default {
   validate ({ params }) {
-    const names = ['blinkgoo', 'sikomo', 'sikomo-dashboard']
+    const names = ['topads', 'blinkgoo', 'sikomo', 'sikomo-dashboard']
     return names.includes(params.name)
   },
   data () {
