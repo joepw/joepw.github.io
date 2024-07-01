@@ -7,19 +7,14 @@
         </div>
         <div style="max-width: 740px;">
           <h1 class="title">
-            Hi! I'm Jonathan, a Front-End Web Developer.
+            Hi! I'm Jonathan, a Front-End Engineer.
           </h1>
           <h2 class="subtitle">
-            I focus on creating high-quality, user-friendly websites that perform seamlessly. With commitment to excellence, I transform ideas into engaging digital experiences. Let's create something amazing together!
+            I focus on creating high-quality, user-friendly websites that perform seamlessly. With commitment to
+            excellence, I transform ideas into engaging digital experiences. Let's create something amazing together!
           </h2>
           <div style="padding: 16px 0;">
-            <a
-              v-for="(link, id) in links"
-              :key="id"
-              :href="link.url"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a v-for="(link, id) in links" :key="id" :href="link.url" target="_blank" rel="noopener noreferrer">
               <img :src="link.image" :alt="link.imageAlt" height="30" width="30" class="link-images">
             </a>
           </div>
@@ -36,10 +31,15 @@
       </h2>
       <div class="section-content">
         <p style="margin-bottom: 20px; font-size: 18px;">
-          I am Jonathan, a web developer from Jakarta, Indonesia, with a degree in Computer Science from Universitas Indonesia. My fascination with web technology stems from its versatility in serving both desktop and mobile environments. I take pride in creating user interfaces that are not only visually appealing but also highly functional and helpful for users.
+          I am Jonathan, a Front-End Engineer from Jakarta, Indonesia, with a degree in Computer Science from
+          Universitas Indonesia. My fascination with web technology stems from its versatility in serving both desktop
+          and mobile environments. I take pride in creating user interfaces that are not only visually appealing but
+          also highly functional and helpful for users.
         </p>
         <p style="font-size: 18px;">
-          With over 5 years of experience in the web development industry, I have had the opportunity to work on several innovative projects, collaborating with talented professionals along the way. These projects have ranged from developing intuitive user interfaces to enhancing user experiences based on feedback and best practices.
+          With over 5 years of experience in the web development industry, I have had the opportunity to work on several
+          innovative projects, collaborating with talented professionals along the way. These projects have ranged from
+          developing intuitive user interfaces to enhancing user experiences based on feedback and best practices.
         </p>
       </div>
     </section>
@@ -48,14 +48,14 @@
         Skillsets
       </h2>
       <div class="section-content">
-        <div style="display: flex; justify-content: space-around; flex-wrap: wrap">
-          <div v-for="(skill, i) in skills" :key="i" style="padding: 0 10px;">
-            <div style="font-weight: 700; text-transform: uppercase;">
+        <div class="skillsets">
+          <div v-for="(skill, i) in skills" :key="i" class="skills">
+            <div style="font-weight: 700; text-transform: uppercase; font-size: .9rem;">
               {{ skill.label }}
             </div>
-            <div v-for="(item, j) in skill.items" :key="j" style="margin: 3px 0; font-size: .9rem;">
-              {{ item }}
-            </div>
+            <span v-for="(item, j) in skill.items" :key="j" style="font-size: .9rem;">
+              {{ "" + item }} <span v-if="j < skill.items.length - 1">•</span>
+            </span>
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@
             <span class="tooltip-text">{{ tech.name }}</span>
           </div>
           <div v-if="pf.cover">
-            <img :src="pf.cover" :alt="pf.fullName" width="100%" style="margin: 10px 0;">
+            <ImageWithPlaceholder :src="pf.cover" :alt="pf.fullName" :dimension="pf.coverDimension" style="margin: 10px 0;" />
             <div style="text-align: center; font-weight: 700; display: flex;">
               <nuxt-link :to="pf.url" style="margin: 0 auto; color: white;">
                 <div class="button">
@@ -113,6 +113,7 @@
         </div>
       </div>
     </section>
+    <BackToTop />
   </div>
 </template>
 
@@ -162,7 +163,7 @@ export default {
           company: 'Blinkgoo',
           type: 'Full time',
           time: 'Jan 2019 - Sep 2020',
-          position: 'Web Developer',
+          position: 'Software Engineer',
           desc: 'Developed the Blinkgoo website from scratch, initially handling full-stack development before focusing exclusively on the front-end. Led the front-end team in implementing UI/UX designs and developing the website for both desktop and mobile web versions. Ensured optimal website performance by focusing on load speed, responsiveness, and accurate design implementation.'
         },
         {
@@ -176,7 +177,7 @@ export default {
           company: 'Sikomo',
           type: 'Internship',
           time: 'Jun 2017 - Aug 2017',
-          position: 'Software Engineer - Web and Android',
+          position: 'Software Engineer',
           desc: 'Began my internship by developing the front-end of the production web dashboard, later transitioning to developing the Android app. Gained in-depth experience with JavaScript frameworks and learned to seamlessly connect user interfaces with back-end services.'
         }
       ],
@@ -275,5 +276,32 @@ export default {
 
 .tooltip:hover .tooltip-text {
   visibility: visible;
+}
+
+.skillsets {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (min-width: 961px) {
+  .skillsets {
+    min-width: 618px;
+  }
+}
+
+@media (max-width: 720px) {
+  .skillsets {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.skills {
+  border: 1px solid #fff;
+  border-radius: 6px;
+  width: 200px;
+  padding: 10px;
 }
 </style>

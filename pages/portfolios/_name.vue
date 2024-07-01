@@ -32,9 +32,11 @@
                 itemscope
                 itemtype="http://schema.org/ImageObject"
                 :class="{ 'col-2': ss.preview === 'medium', 'col-3': ss.preview === 'small' }"
+                style="width: 100%;"
               >
                 <a :href="s.src" itemprop="contentUrl" :data-size="s.dimension">
-                  <img :src="s.src" itemprop="thumbnail" alt="Image description" width="100%">
+                  <!-- <img :src="s.src" itemprop="thumbnail" alt="Image description" width="100%"> -->
+                  <ImageWithPlaceholder :src="s.src" :alt="s.caption" :dimension="s.dimension" />
                 </a>
                 <figcaption itemprop="caption description" style="text-align: center;">
                   {{ s.caption }}
@@ -106,6 +108,7 @@
         </div>
       </div>
     </div>
+    <BackToTop />
   </div>
 </template>
 
@@ -422,6 +425,7 @@ export default {
   width: 100%;
   height: 60px;
   background-image: linear-gradient(to bottom, transparent, #191a1d);
+  z-index: 4;
 }
 
 .show_more, .show_less {

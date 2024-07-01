@@ -4,6 +4,7 @@ export const portfolios = [
     fullName: 'TopAds',
     description: 'An advertising tool within Tokopedia that allows sellers to manage and optimize their ad campaigns, improving the visibility and performance of their products in the marketplace.',
     cover: 'portfolio/topads/cover.png',
+    coverDimension: '1391x892',
     url: '/portfolios/topads',
     href: '',
     tech: [
@@ -106,6 +107,7 @@ export const portfolios = [
     fullName: 'Blinkgoo',
     description: 'A platform that enables users to search and compare products, and find the best promotions and discounts from various leading e-commerce sites and marketplaces.',
     cover: 'portfolio/blinkgoo/cover.png',
+    coverDimension: '1228x804',
     url: '/portfolios/blinkgoo',
     href: '',
     tech: [
@@ -271,6 +273,7 @@ export const portfolios = [
     fullName: 'MyMovo Web Application',
     description: 'A B2B web platform designed for logistics service providers to manage express delivery services. This product is developed by PT Astra Graphia Information Technology (AGIT).',
     cover: '',
+    coverDimension: '',
     url: '/portfolios/mymovo',
     href: '',
     tech: [
@@ -298,6 +301,7 @@ export const portfolios = [
     fullName: 'Sikomo Android App',
     description: 'An application for booking shuttle bus services between Jakarta and Bandung.',
     cover: 'portfolio/sikomo/cover.png',
+    coverDimension: '1620x960',
     url: '/portfolios/sikomo',
     href: '',
     tech: [
@@ -369,6 +373,7 @@ export const portfolios = [
     fullName: 'Sikomo Production Web Dashboard',
     description: 'A comprehensive web dashboard for managing users, partners, bookings, and payments for the Sikomo Jakarta-Bandung shuttle bus service.',
     cover: 'portfolio/sikomo-dashboard/cover.png',
+    coverDimension: '1360x767',
     url: '/portfolios/sikomo-dashboard',
     href: '',
     tech: [
