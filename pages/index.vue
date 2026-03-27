@@ -10,8 +10,8 @@
             Hi! I'm Jonathan, a Front-End Engineer.
           </h1>
           <h2 class="subtitle">
-            I focus on creating high-quality, user-friendly websites that perform seamlessly. With commitment to
-            excellence, I transform ideas into engaging digital experiences. Let's create something amazing together!
+            I focus on building high-quality, user-centric websites that combine performance, aesthetics, and usability.
+            I turn ideas into products people love to use—let's build something great together!
           </h2>
           <div style="padding: 16px 0;">
             <a v-for="(link, id) in links" :key="id" :href="link.url" target="_blank" rel="noopener noreferrer">
@@ -31,15 +31,13 @@
       </h2>
       <div class="section-content">
         <p style="margin-bottom: 20px; font-size: 18px;">
-          I am Jonathan, a Front-End Engineer from Jakarta, Indonesia, with a degree in Computer Science from
-          Universitas Indonesia. My fascination with web technology stems from its versatility in serving both desktop
-          and mobile environments. I take pride in creating user interfaces that are not only visually appealing but
-          also highly functional and helpful for users.
+          I'm Jonathan, a Front-End Engineer based in Jakarta, Indonesia, with a degree in Computer Science from Universitas Indonesia.
+          I'm passionate about web technology, particularly its ability to deliver seamless experiences across both desktop and mobile platforms.
+          I enjoy crafting user interfaces that are not only visually engaging but also intuitive, functional, and genuinely useful.
         </p>
         <p style="font-size: 18px;">
-          With over 5 years of experience in the web development industry, I have had the opportunity to work on several
-          innovative projects, collaborating with talented professionals along the way. These projects have ranged from
-          developing intuitive user interfaces to enhancing user experiences based on feedback and best practices.
+          With over five years of experience in web development, I've contributed to a variety of innovative projects and collaborated with diverse, talented teams.
+          My work spans building intuitive interfaces, improving user experiences through feedback-driven iterations, and applying modern best practices to create efficient and scalable solutions.
         </p>
       </div>
     </section>
@@ -144,14 +142,21 @@ export default {
         },
         {
           label: 'Frameworks/Libraries',
-          items: ['React', 'Emotion', 'Jest', 'Playwright', 'Vue', 'Nuxt', 'Ant Design', 'Storybook', 'Koa', 'Fastify']
+          items: ['React', 'Emotion', 'Jest', 'Playwright', 'Vue', 'Nuxt', 'Ant Design', 'Storybook', 'Koa', 'Fastify', 'NestJS', 'Radix UI']
         },
         {
           label: 'Tools',
-          items: ['Git/Github', 'Chrome DevTools', 'Figma', 'Jira', 'Slack', 'Trello', 'Confluence', 'New Relic', 'GSuite', 'Consul', 'Jenkins']
+          items: ['Git/Github', 'Chrome DevTools', 'Figma', 'Jira', 'Slack', 'Trello', 'Confluence', 'New Relic', 'GSuite', 'Consul', 'Jenkins', 'Supabase']
         }
       ],
       experiences: [
+        {
+          company: 'LittleLives',
+          type: 'Full time',
+          time: 'Sep 2024 - Jan 2026',
+          position: 'Frontend Engineer',
+          desc: 'Part of the product engineering team building a school management system used by administrators to manage day-to-day operations across multiple childcare centres, I worked across various modules of the admin dashboard to build and improve features for managing students, scheduling, and centre operations. I also contributed extensively to a real-time chat feature that enables direct communication between school administrators and parents within the platform. In addition, I helped develop a student assessment module—a form-building tool that allows educators to create, distribute, and review assessments for students. Alongside my frontend responsibilities, I occasionally took on backend tasks, supporting feature delivery by working on APIs and business logic in collaboration with the core backend team.'
+        },
         {
           company: 'Tokopedia',
           type: 'Full time',
@@ -271,7 +276,7 @@ export default {
   top: 30px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 3;
 }
 
 .tooltip:hover .tooltip-text {
