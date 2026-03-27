@@ -11,6 +11,13 @@
  */
 
 
+/*!
+ * Vue.js v2.7.16
+ * (c) 2014-2023 Evan You
+ * Released under the MIT License.
+ */
+
+
 /*! PhotoSwipe - v4.1.3 - 2019-01-08
 * http://photoswipe.com
 * Copyright (c) 2019 Dmitry Semenov; */
@@ -18,16 +25,3 @@
 /*! PhotoSwipe Default UI - 4.1.3 - 2019-01-08
 * http://photoswipe.com
 * Copyright (c) 2019 Dmitry Semenov; */
-
-
-/*!
-  * vue-router v3.5.2
-  * (c) 2021 Evan You
-  * @license MIT
-  */
-
-/*!
- * Vue.js v2.6.14
- * (c) 2014-2021 Evan You
- * Released under the MIT License.
- */
