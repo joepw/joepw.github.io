@@ -1,38 +1,36 @@
 <template>
   <button v-show="isVisible" class="back-to-top" @click="scrollToTop">
     <img
-      src="~/static/arrow-down.svg"
+      src="/arrow-down.svg"
       alt="Back to top"
       style="transform: rotate(180deg);"
     >
   </button>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      isVisible: false
-    }
-  },
-  mounted () {
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-  methods: {
-    handleScroll () {
-      this.isVisible = window.scrollY > 100
-    },
-    scrollToTop () {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      })
-    }
-  }
+<script setup lang="ts">
+import { onMounted, onBeforeUnmount, ref } from 'vue'
+
+const isVisible = ref(false)
+
+function handleScroll () {
+  isVisible.value = window.scrollY > 100
 }
+
+function scrollToTop () {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style scoped>
@@ -48,7 +46,6 @@ export default {
   cursor: pointer;
   z-index: 3;
   font-size: 16px;
-  font-family: Inherit;
   display: flex;
   align-items: center;
 }

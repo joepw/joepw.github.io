@@ -4,63 +4,44 @@
       :src="src"
       :alt="alt"
       class="loaded-image"
+      loading="lazy"
       @load="onLoad"
     >
     <div v-if="!loaded" class="shimmer" />
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    src: {
-      type: String,
-      required: true
-    },
-    alt: {
-      type: String,
-      default: ''
-    },
-    dimension: {
-      type: String,
-      required: true
-    }
-  },
-  data () {
-    return {
-      loaded: false,
-      aspectRatio: 1
-    }
-  },
-  computed: {
-    placeholderStyle () {
-      return {
-        width: '100%',
-        paddingBottom: `${100 / this.aspectRatio}%`
-      }
-    }
-  },
-  watch: {
-    dimension: {
-      immediate: true,
-      handler () {
-        this.calculateAspectRatio()
-      }
-    }
-  },
-  mounted () {
-    this.calculateAspectRatio()
-  },
-  methods: {
-    onLoad () {
-      this.loaded = true
-    },
-    calculateAspectRatio () {
-      const [width, height] = this.dimension.split('x').map(Number)
-      this.aspectRatio = width / height
-    }
+<script setup lang="ts">
+import { computed, ref, watch } from 'vue'
+
+const props = defineProps({
+  src: { type: String, required: true },
+  alt: { type: String, default: '' },
+  dimension: { type: String, required: true }
+})
+
+const loaded = ref(false)
+const aspectRatio = ref(1)
+
+function calculateAspectRatio () {
+  const [width, height] = props.dimension.split('x').map(Number)
+  if (width && height) {
+    aspectRatio.value = width / height
   }
 }
+
+watch(() => props.dimension, calculateAspectRatio, { immediate: true })
+
+function onLoad () {
+  loaded.value = true
+}
+
+const placeholderStyle = computed(() => {
+  return {
+    width: '100%',
+    paddingBottom: `${100 / aspectRatio.value}%`
+  }
+})
 </script>
 
 <style scoped>
@@ -102,6 +83,7 @@ export default {
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }

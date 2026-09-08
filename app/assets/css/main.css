@@ -19,9 +19,9 @@ html {
   background: #191a1d;
 }
 
-  *,
-  *::before,
-  *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
 }
