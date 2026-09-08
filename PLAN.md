@@ -123,7 +123,7 @@ What was built / verified:
 
 ---
 
-**2026-09-08 — Phase 3 (Redesign) started: dark/light theme + typography refinement**
+**2026-09-08 — Phase 3 (Redesign): DONE & verified**
 
 Direction (user choice): **refine the dark theme AND add a dark/light toggle.**
 
@@ -141,6 +141,7 @@ Implemented:
   - Skill cards now surfaced (`--color-surface`) with larger radius.
   - Portfolio entries get accent-colored titles + bottom-border separation.
   - Lightbox/gradient/shimmer all theme-aware via tokens.
+- [x] **Verified**: `nuxt generate` builds clean; served `.output/public` and confirmed all routes 200, static images/favicon serve, `mymovo` correctly 404s (no link, matches original), theme `<head>` script present in built HTML, and CSS tokens for both themes present in compiled output.
 
 **Plan note (documented as required):**
 - Design now lives as a token layer, so switching themes (or later adding more/brandable themes) requires only editing the token block in `main.css`.
