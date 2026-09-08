@@ -53,12 +53,14 @@
                 itemtype="http://schema.org/ImageObject"
                 :class="figureClass(ss.preview)"
                 class="gallery-item"
-                @click="openLightbox(gi, j)"
               >
                 <a
                   :href="s.src"
                   itemprop="contentUrl"
                   :data-size="s.dimension"
+                  class="gallery-thumb"
+                  onclick="event.preventDefault()"
+                  @click.prevent="openLightbox(gi, j)"
                 >
                   <ImageWithPlaceholder
                     :src="s.src"
@@ -75,22 +77,27 @@
               </figure>
             </div>
             <div
-              v-if="ss.screens.length > 2"
+              v-if="hasMultipleSections && ss.screens.length > 2 && !expanded[gi]"
               class="show_more_gradient"
             />
           </div>
           <div
-            v-if="ss.screens.length > 2"
-            class="show_more button"
+            v-if="hasMultipleSections && ss.screens.length > 2"
+            class="show-toggle button"
+            :aria-expanded="expanded[gi]"
             @click="toggleGroup(gi)"
           >
-            Show More
-          </div>
-          <div
-            class="show_less button"
-            @click="toggleGroup(gi)"
-          >
-            Show Less
+            {{ expanded[gi] ? 'Show Less' : 'Show More' }}
+            <svg
+              class="toggle-chevron"
+              :class="{ 'is-open': expanded[gi] }"
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              aria-hidden="true"
+            >
+              <path d="M6 5L12 20 18 5Z" />
+            </svg>
           </div>
         </div>
       </div>
@@ -99,53 +106,14 @@
       </div>
     </section>
 
-    <Teleport to="body">
-      <div
-        v-if="lightbox"
-        class="lightbox"
-        role="dialog"
-        aria-modal="true"
-        @click.self="closeLightbox"
-      >
-        <button
-          class="lightbox-close"
-          aria-label="Close (Esc)"
-          @click="closeLightbox"
-        >
-          ×
-        </button>
-        <button
-          class="lightbox-prev"
-          aria-label="Previous"
-          @click="prevImage"
-        >
-          ‹
-        </button>
-        <img
-          :src="lightbox.items[lightbox.index].src"
-          :alt="lightbox.items[lightbox.index].caption"
-          class="lightbox-image"
-        >
-        <button
-          class="lightbox-next"
-          aria-label="Next"
-          @click="nextImage"
-        >
-          ›
-        </button>
-        <div class="lightbox-caption">
-          {{ lightbox.items[lightbox.index].caption }}
-          <span class="lightbox-counter">
-            {{ lightbox.index + 1 }}/{{ lightbox.items.length }}
-          </span>
-        </div>
-      </div>
-    </Teleport>
+
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import PhotoSwipeLightbox from 'photoswipe/lightbox'
+import 'photoswipe/style.css'
 import {
   findPortfolio,
   portfolioNames,
@@ -161,12 +129,12 @@ const router = useRouter()
 definePageMeta({
   validate: (data) => {
     const name = data.params?.name
-    return Boolean(name && portfolioNames.includes(name))
+    return Boolean(name && portfolioNames.includes(String(name)))
   }
 })
 
 const portfolio = computed<Portfolio | undefined>(() => {
-  return findPortfolio(route.params.name ?? '')
+  return findPortfolio(String(route.params.name ?? ''))
 })
 
 useHead(() => {
@@ -186,6 +154,12 @@ const allImages = computed<Screenshot[]>(() =>
 
 const expanded = ref<boolean[]>([])
 
+// Collapse/expand ("Show More") only makes sense when the page has several
+// screenshot sections to compress; single-section pages show everything.
+const hasMultipleSections = computed(() =>
+  portfolio.value ? portfolio.value.screenshots.length > 1 : false
+)
+
 watch(
   portfolio,
   () => {
@@ -196,17 +170,8 @@ watch(
   { immediate: true }
 )
 
-const lightbox = ref<{ items: Screenshot[]; index: number } | null>(null)
-
-function openLightbox (groupIndex: number, screenIndex: number) {
-  const p = portfolio.value
-  if (!p) return
-  let flatIndex = screenIndex
-  for (let i = 0; i < groupIndex; i++) {
-    flatIndex += p.screenshots[i].screens.length
-  }
-  lightbox.value = { items: allImages.value, index: flatIndex }
-}
+// PhotoSwipe lightbox instance (created once on mount).
+let lightbox: PhotoSwipeLightbox | null = null
 
 function goBack () {
   if (window.history.length > 1) {
@@ -217,46 +182,68 @@ function goBack () {
   }
 }
 
-function closeLightbox () {
-  lightbox.value = null
+function buildDataSource () {
+  return allImages.value.map((s) => ({
+    src: s.src,
+    width: Number(s.dimension.split('x')[0]) || 1360,
+    height: Number(s.dimension.split('x')[1]) || 768,
+    alt: s.caption,
+    caption: s.caption,
+  }))
 }
 
-function prevImage () {
-  const lb = lightbox.value
-  if (!lb) return
-  lb.index = (lb.index - 1 + lb.items.length) % lb.items.length
-}
-
-function nextImage () {
-  const lb = lightbox.value
-  if (!lb) return
-  lb.index = (lb.index + 1) % lb.items.length
-}
-
-function onKeydown (e: KeyboardEvent) {
-  if (!lightbox.value) return
-  if (e.key === 'Escape') {
-    closeLightbox()
+function openLightbox (groupIndex: number, screenIndex: number) {
+  const p = portfolio.value
+  if (!p || !lightbox) return
+  const screenshots = p.screenshots
+  let index = screenIndex
+  for (let i = 0; i < groupIndex; i++) {
+    index += screenshots[i]!.screens.length
   }
-  else if (e.key === 'ArrowLeft') {
-    prevImage()
-  }
-  else if (e.key === 'ArrowRight') {
-    nextImage()
-  }
+  lightbox!.options.dataSource = buildDataSource()
+  lightbox!.loadAndOpen(index)
 }
 
 onMounted(() => {
-  window.addEventListener('keydown', onKeydown)
+  lightbox = new PhotoSwipeLightbox({
+    dataSource: buildDataSource(),
+    pswpModule: () => import('photoswipe'),
+    wheelToZoom: true,
+    spacing: 0.1,
+    bgOpacity: 0.92,
+    padding: { top: 20, bottom: 60, left: 20, right: 20 },
+    closeTitle: 'Close (Esc)',
+    zoomTitle: 'Zoom',
+    arrowPrevTitle: 'Previous',
+    arrowNextTitle: 'Next',
+    errorMsg: 'Image could not be loaded',
+  })
+  lightbox.on('uiRegister', () => {
+    lightbox!.pswp!.ui.registerElement({
+      name: 'custom-caption',
+      order: 9,
+      isButton: false,
+      appendTo: 'root',
+      html: '',
+      onInit: (el) => {
+        lightbox!.pswp!.on('change', () => {
+          const caption = lightbox!.pswp!.currSlide?.data?.caption ?? ''
+          el.textContent = caption
+        })
+      },
+    })
+  })
+  lightbox.init()
 })
 
 onBeforeUnmount(() => {
-  window.removeEventListener('keydown', onKeydown)
+  lightbox?.destroy()
+  lightbox = null
 })
 
 function galleryStyle (groupIndex: number, group: ScreenshotGroup) {
   const isExpanded = expanded.value[groupIndex]
-  const collapsible = group.screens.length > 2
+  const collapsible = hasMultipleSections.value && group.screens.length > 2
   return {
     maxHeight: collapsible && !isExpanded ? '600px' : '9999px',
     overflow: isExpanded ? 'visible' : 'hidden'
@@ -311,28 +298,42 @@ function toggleGroup (groupIndex: number) {
 .gallery {
   display: flex;
   flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .gallery figure {
-  display: inline-block;
-  padding: 25px;
+  display: block;
+  padding: 0;
+  text-align: center;
+  min-width: 0;
 }
 
+.gallery-thumb {
+  display: block;
+}
+
+/* flex-grow is 0 so rows with fewer items (e.g. a lone last-row image)
+   keep their column width instead of stretching to fill the row.
+   Basis subtracts the gap so columns fit exactly at every breakpoint. */
 .col-3 {
-  max-width: 33.3%;
+  flex: 0 1 calc((100% - 48px) / 3);
 }
 
 .col-2 {
-  max-width: 50%;
+  flex: 0 1 calc((100% - 24px) / 2);
+}
+
+.gallery figcaption {
+  margin-top: 8px;
+  color: var(--color-muted);
+  font-size: 13px;
 }
 
 @media (max-width: 960px) {
-  .gallery figure {
-    padding: 20px;
-  }
-
   .col-3 {
-    max-width: 50%;
+    flex: 0 1 calc((100% - 24px) / 2);
   }
 }
 
@@ -341,12 +342,13 @@ function toggleGroup (groupIndex: number) {
     padding: 40px;
   }
 
-  .gallery figure {
-    padding: 10px;
+  .col-2,
+  .col-3 {
+    flex: 1 1 100%;
   }
 
-  .col-2 {
-    max-width: 100%;
+  .gallery {
+    gap: 16px;
   }
 }
 
@@ -359,85 +361,37 @@ function toggleGroup (groupIndex: number) {
   z-index: 4;
 }
 
-.show_more,
-.show_less {
+.show-toggle {
   text-align: center;
-  margin: 0 auto;
+  margin: 12px auto 0;
 }
 
-.show_less {
-  display: none;
+.toggle-chevron {
+  margin-left: 6px;
+  fill: currentColor;
+  transition: transform 0.3s ease;
 }
 
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  background: var(--color-overlay);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.toggle-chevron.is-open {
+  transform: rotate(180deg);
 }
+</style>
 
-.lightbox-image {
-  max-width: 92%;
-  max-height: 82%;
-  object-fit: contain;
-  box-shadow: var(--shadow);
-}
-
-.lightbox-close {
+<style>
+/* PhotoSwipe custom caption (global — injected outside component scope) */
+.pswp__custom-caption {
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  color: #fff;
+  width: calc(100% - 32px);
+  max-width: 480px;
+  padding: 6px 12px;
+  border-radius: 6px;
   position: absolute;
-  top: 16px;
-  right: 22px;
-  font-size: 28px;
-  line-height: 1;
-  background: transparent;
-  border: none;
-  color: var(--color-text);
-  cursor: pointer;
-  z-index: 2;
-}
-
-.lightbox-prev {
-  position: absolute;
-  left: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 44px;
-  background: transparent;
-  border: none;
-  color: var(--color-text);
-  cursor: pointer;
-  z-index: 2;
-}
-
-.lightbox-next {
-  position: absolute;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 44px;
-  background: transparent;
-  border: none;
-  color: var(--color-text);
-  cursor: pointer;
-  z-index: 2;
-}
-
-.lightbox-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 12px 20px;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
   text-align: center;
-  color: var(--color-text-soft);
-  background: var(--color-surface);
-  z-index: 2;
-}
-
-.lightbox-counter {
-  color: var(--color-muted);
+  z-index: 1;
 }
 </style>

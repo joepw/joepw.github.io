@@ -38,14 +38,20 @@
           </div>
         </div>
       </div>
-      <div class="button" @click="goToAbout">
+      <button
+        class="button"
+        type="button"
+        @click="goToAbout"
+      >
         About Me
         <img
           src="/arrow-down.svg"
-          alt="About Me"
+          alt=""
+          width="16"
+          height="16"
           class="button-icon"
         >
-      </div>
+      </button>
     </header>
 
     <section
@@ -432,7 +438,6 @@ function goToAbout () {
 .portfolio-block {
   margin-bottom: 60px;
   padding-bottom: 40px;
-  border-bottom: 1px solid var(--color-border);
 }
 
 .portfolio-name {

@@ -3,6 +3,8 @@
     <img
       src="/arrow-down.svg"
       alt="Back to top"
+      width="16"
+      height="16"
       style="transform: rotate(180deg);"
     >
   </button>

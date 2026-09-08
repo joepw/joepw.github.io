@@ -10,16 +10,18 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "deploy": "gh-pages -d .output/public --dotfiles=true"
+    "deploy": "gh-pages -d .output/public --dotfiles"
   },
   "dependencies": {
     "nuxt": "^4.5.2",
+    "photoswipe": "^5.4.4",
     "vue": "^3.5.42",
     "vue-router": "^5.3.1"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
     "eslint": "^10.10.0",
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "vue-tsc": "^3.3.11"
   }
 }

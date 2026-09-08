@@ -3,6 +3,8 @@
     <img
       :src="src"
       :alt="alt"
+      :width="Number(dimension.split('x')[0])"
+      :height="Number(dimension.split('x')[1])"
       class="loaded-image"
       loading="lazy"
       @load="onLoad"

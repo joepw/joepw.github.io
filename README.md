@@ -53,5 +53,5 @@ nuxt.config.ts
 ```
 
 > Notes for future maintenance:
-> - Photoswipe (Nuxt 2) was replaced with a lazy-loading custom lightbox — see `PLAN.md`.
+> - Photoswipe upgraded from v4 to v5 (`PhotoSwipeLightbox`, `dataSource`, `uiRegister`) — see `PLAN.md`.
 > - All asset paths are URL-root-relative (`/portfolio/...`) since the site is served at the repo root.

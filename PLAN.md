@@ -112,7 +112,7 @@ What was built / verified:
 - [x] `nuxt generate` builds successfully; 12 routes prerendered (`/`, `/404`, `/200`, and 4 portfolio pages). Verified key content present in static HTML.
 
 **Plan changes (documented as required):**
-1. **PhotoSwipe 4 removed** → replaced with a lightweight, self-contained custom lightbox (prev/next, caption counter, Esc/arrow keyboard, backdrop close) in the detail page. No heavy third-party gallery dependency. Lazy-load via placeholder shimmering retained (Nuxt 2 `ImageWithPlaceholder` ported as `app/components/ImageWithPlaceholder.vue`).
+1. **PhotoSwipe 4 → v5** — kept and upgraded (not removed). Uses `PhotoSwipeLightbox` with `dataSource`, `uiRegister` for caption. Dependency `photoswipe` `^5.4.4` remains. Lazy-load shimmer via `ImageWithPlaceholder.vue` retained.
 2. **ESLint tooling** uses `@nuxt/eslint` (flat config) instead of the legacy `@nuxtjs/eslint-module`/`babel-eslint` stack.
 3. **Images/SEO**: global `<head>` via `nuxt.config app.head` + `useHead()` per page; asset paths are URL-root-relative since the site is served at the repo root.
 4. **Static path move** `static/` → `public/` (Nuxt 3/4 convention).
