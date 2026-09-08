@@ -39,18 +39,20 @@ onBeforeUnmount(() => {
   bottom: 30px;
   right: 30px;
   padding: 8px;
-  background-color: #191a1d;
-  border: 1px solid #fff;
-  border-radius: 4px;
-  color: #fff;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text);
   cursor: pointer;
   z-index: 3;
   font-size: 16px;
   display: flex;
   align-items: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .back-to-top:hover {
-  background-color: #333;
+  background-color: var(--color-hover-bg);
+  color: var(--color-accent);
 }
 </style>

@@ -355,7 +355,7 @@ function toggleGroup (groupIndex: number) {
   bottom: 0;
   width: 100%;
   height: 60px;
-  background-image: linear-gradient(to bottom, transparent, #191a1d);
+  background-image: linear-gradient(to bottom, transparent, var(--color-screen-fade));
   z-index: 4;
 }
 
@@ -373,7 +373,7 @@ function toggleGroup (groupIndex: number) {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: rgba(0, 0, 0, 0.92);
+  background: var(--color-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -383,7 +383,7 @@ function toggleGroup (groupIndex: number) {
   max-width: 92%;
   max-height: 82%;
   object-fit: contain;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--shadow);
 }
 
 .lightbox-close {
@@ -394,7 +394,7 @@ function toggleGroup (groupIndex: number) {
   line-height: 1;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--color-text);
   cursor: pointer;
   z-index: 2;
 }
@@ -407,7 +407,7 @@ function toggleGroup (groupIndex: number) {
   font-size: 44px;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--color-text);
   cursor: pointer;
   z-index: 2;
 }
@@ -420,7 +420,7 @@ function toggleGroup (groupIndex: number) {
   font-size: 44px;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--color-text);
   cursor: pointer;
   z-index: 2;
 }
@@ -432,12 +432,12 @@ function toggleGroup (groupIndex: number) {
   right: 0;
   padding: 12px 20px;
   text-align: center;
-  color: #ddd;
-  background: rgba(0, 0, 0, 0.55);
+  color: var(--color-text-soft);
+  background: var(--color-surface);
   z-index: 2;
 }
 
 .lightbox-counter {
-  color: #aaa;
+  color: var(--color-muted);
 }
 </style>

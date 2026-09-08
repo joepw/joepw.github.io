@@ -107,7 +107,7 @@
           <div class="experience-company">
             {{ experience.company }}
           </div>
-          <div>
+          <div class="experience-time">
             {{ experience.time }} • {{ experience.type }}
           </div>
           <div>
@@ -317,20 +317,20 @@ function goToAbout () {
 }
 
 .section-title {
-  color: #a9a9a9;
+  color: var(--color-muted);
   text-transform: uppercase;
   text-align: center;
-  font-size: 16px;
-  letter-spacing: 2px;
+  font-size: 14px;
+  letter-spacing: 3px;
   margin-bottom: 70px;
 }
 
 .section-content {
-  font-weight: 300;
+  font-weight: 400;
   max-width: 700px;
   width: 100%;
   margin: 0 auto;
-  color: #cccccc;
+  color: var(--color-text-soft);
 }
 
 .link-images {
@@ -351,7 +351,8 @@ function goToAbout () {
 
 .tooltip .tooltip-text {
   visibility: hidden;
-  background-color: black;
+  background-color: var(--color-text);
+  color: var(--color-bg);
   text-align: center;
   border-radius: 6px;
   padding: 5px;
@@ -382,7 +383,7 @@ function goToAbout () {
 
 @media (min-width: 961px) {
   .skillsets {
-    min-width: 618px;
+    min-width: 648px;
   }
 }
 
@@ -394,10 +395,11 @@ function goToAbout () {
 }
 
 .skills {
-  border: 1px solid #fff;
-  border-radius: 6px;
-  width: 200px;
-  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  width: 210px;
+  padding: 14px;
+  background-color: var(--color-surface);
 }
 
 .skill-label {
@@ -416,6 +418,11 @@ function goToAbout () {
 
 .experience-company {
   font-weight: 700;
+  color: var(--color-text);
+}
+
+.experience-time {
+  color: var(--color-muted);
 }
 
 .experience-desc {
@@ -424,11 +431,19 @@ function goToAbout () {
 
 .portfolio-block {
   margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .portfolio-name {
   font-weight: 700;
   margin-bottom: 10px;
+  font-size: 22px;
+  color: var(--color-text);
+}
+
+.portfolio-name a {
+  color: var(--color-accent);
 }
 
 .portfolio-desc {
@@ -452,6 +467,6 @@ function goToAbout () {
 
 .portfolio-link {
   margin: 0 auto;
-  color: white;
+  color: var(--color-text);
 }
 </style>

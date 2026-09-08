@@ -69,10 +69,10 @@ const placeholderStyle = computed(() => {
   height: 100%;
   background: linear-gradient(
     to right,
-    #dcdcdc 0%,
-    #c0c0c0 20%,
-    #dcdcdc 40%,
-    #dcdcdc 100%
+    var(--shimmer-a) 0%,
+    var(--shimmer-b) 20%,
+    var(--shimmer-a) 40%,
+    var(--shimmer-a) 100%
   );
   background-size: 200% auto;
   animation: shimmer 1.5s linear infinite;

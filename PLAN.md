@@ -120,3 +120,27 @@ What was built / verified:
 **Pending (later phases):**
 - Phase 3 — Redesign (visual/typography/layout refresh; design-token CSS polish).
 - Phase 4 — Deploy cutover: run `npm run deploy` (gh-pages from `.output/public`), sync `gh-pages` branch, confirm custom domain / `.nojekyll`.
+
+---
+
+**2026-09-08 — Phase 3 (Redesign) started: dark/light theme + typography refinement**
+
+Direction (user choice): **refine the dark theme AND add a dark/light toggle.**
+
+Implemented:
+- [x] **CSS design-token system** in `app/assets/css/main.css`:
+  - Dark tokens (default) + `html[data-theme='light']` overrides.
+  - Color tokens: bg, surface, text, text-soft, muted, faint, border, border-strong, link, accent, hover-bg, overlay, screen-fade, shadow, shimmer.
+  - Unifies all pages/components on tokens (no hard-coded hex remains outside the token block).
+- [x] **Theme toggle** — new `app/components/ThemeToggle.vue` (fixed top-right circle button, sun/moon icon):
+  - Persists choice in `localStorage['theme']`.
+  - Defaults to OS preference via `prefers-color-scheme`.
+  - Inline `<head>` script in `nuxt.config.ts app.head` sets `data-theme` before first paint (prevents theme flash).
+- [x] **Typography / spacing refinement** (keeps dark identity, modernized):
+  - Larger, slightly bolder headline (`.title`), refined section-title letter-spacing, `line-height: 1.65`, smooth scrolling, `prefers-reduced-motion` respected.
+  - Skill cards now surfaced (`--color-surface`) with larger radius.
+  - Portfolio entries get accent-colored titles + bottom-border separation.
+  - Lightbox/gradient/shimmer all theme-aware via tokens.
+
+**Plan note (documented as required):**
+- Design now lives as a token layer, so switching themes (or later adding more/brandable themes) requires only editing the token block in `main.css`.

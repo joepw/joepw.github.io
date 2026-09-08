@@ -1,5 +1,6 @@
 <template>
   <div class="layout">
+    <ThemeToggle />
     <slot />
     <footer class="footer">
       Jonathan Prasetya Wijaya • {{ year }}
@@ -17,5 +18,6 @@ const year = new Date().getFullYear()
   padding: 50px 80px;
   text-align: center;
   font-weight: 700;
+  color: var(--color-text-soft);
 }
 </style>

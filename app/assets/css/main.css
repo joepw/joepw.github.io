@@ -1,6 +1,60 @@
+/* ============================================================
+   Design tokens — dark & light themes
+   Switched via `data-theme` on <html> (set by theme script/toggle).
+   ============================================================ */
+
+:root {
+  color-scheme: light dark;
+}
+
+/* --- Dark theme (default) --- */
+:root,
+html[data-theme='dark'] {
+  --color-bg: #10131a;
+  --color-surface: #181c24;
+  --color-text: #e9ebf0;
+  --color-text-soft: #aeb6c2;
+  --color-muted: #7c8491;
+  --color-faint: #4a5160;
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-border-strong: #ffffff;
+  --color-link: #c8cfdb;
+  --color-accent: #6fb5ff;
+  --color-accent-strong: #4f94ff;
+  --color-hover-bg: #2a313f;
+  --color-overlay: rgba(0, 0, 0, 0.92);
+  --color-screen-fade: #10131a;
+  --shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+  --shimmer-a: #dcdcdc;
+  --shimmer-b: #c0c0c0;
+}
+
+/* --- Light theme --- */
+html[data-theme='light'] {
+  --color-bg: #f6f7f9;
+  --color-surface: #ffffff;
+  --color-text: #1b2029;
+  --color-text-soft: #505a66;
+  --color-muted: #6b7480;
+  --color-faint: #9aa2ac;
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-border-strong: #14161b;
+  --color-link: #3f4854;
+  --color-accent: #2f6bff;
+  --color-accent-strong: #1f56d8;
+  --color-hover-bg: #e8eaf0;
+  --color-overlay: rgba(255, 255, 255, 0.94);
+  --color-screen-fade: #f6f7f9;
+  --shadow: 0 4px 28px rgba(15, 23, 42, 0.18);
+  --shimmer-a: #e8e8ee;
+  --shimmer-b: #d4d4dc;
+}
+
 html {
   font-family:
-    'Source Sans Pro',
+    'Quicksand',
+    ui-sans-serif,
+    system-ui,
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
@@ -9,14 +63,18 @@ html {
     Arial,
     sans-serif;
   font-size: 16px;
+  font-synthesis: none;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  color: white;
-  background: #191a1d;
+  color: var(--color-text);
+  background: var(--color-bg);
+  scroll-behavior: smooth;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 *,
@@ -28,24 +86,26 @@ html {
 
 a {
   text-decoration: none;
-  color: #ccc;
+  color: var(--color-link);
+  transition: color 0.15s ease;
 }
 
 a:hover {
-  color: #94e1ff;
+  color: var(--color-accent);
 }
 
 .section {
   padding: 100px 170px;
   max-width: 1264px;
   margin: 0 auto;
-  line-height: 1.5;
+  line-height: 1.65;
 }
 
 .title {
   font-family:
     'Quicksand',
-    'Source Sans Pro',
+    ui-sans-serif,
+    system-ui,
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
@@ -54,34 +114,39 @@ a:hover {
     Arial,
     sans-serif;
   display: block;
-  font-weight: 300;
-  font-size: 36px;
-  letter-spacing: 1px;
-  color: white;
-  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin-bottom: 14px;
 }
 
 .subtitle {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 24px;
-  word-spacing: 5px;
-  color: #aaa;
-  margin-bottom: 10px;
+  font-feature-settings: 'kern';
+  letter-spacing: 0.01em;
+  color: var(--color-text-soft);
+  margin-bottom: 12px;
 }
 
 .button {
-  border-radius: 4px;
-  border: 1px solid #fff;
+  border-radius: 8px;
+  border: 1px solid var(--color-border-strong);
   text-decoration: none;
   cursor: pointer;
-  padding: 10px 15px;
+  padding: 10px 18px;
   width: max-content;
   display: flex;
   align-items: center;
+  gap: 6px;
+  color: var(--color-text);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .button:hover {
-  background-color: #444;
+  background-color: var(--color-hover-bg);
+  border-color: var(--color-accent);
 }
 
 @media (max-width: 960px) {
@@ -90,7 +155,7 @@ a:hover {
   }
 
   .title {
-    font-size: 30px;
+    font-size: 32px;
   }
 
   .subtitle {
@@ -105,5 +170,15 @@ a:hover {
 @keyframes appear {
   0% {
     opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .appear {
+    animation: none;
   }
 }
