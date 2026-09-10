@@ -1,1 +1,0 @@
-import{o as e}from"#entry";var t=e(`/arrow-down.svg`);export{t};
