@@ -1,75 +1,19 @@
 /* ============================================================
-   Design tokens — dark & light themes
-   Switched via `data-theme` on <html> (set by theme script/toggle).
+   Shared global / base styles (structure only).
+   All colors, fonts, and theme-specific values come from CSS
+   custom properties defined in a per-theme file
+   (app/assets/themes/<name>.css), loaded via `nuxt.config css`.
+
+   Because nothing here is theme-specific, this file is identical
+   across every theme branch (see DESIGN-THEMES.md).
    ============================================================ */
 
 :root {
   color-scheme: light dark;
 }
 
-/* --- Dark theme (default) --- */
-:root,
-html[data-theme='dark'] {
-  --color-bg: #10131a;
-  --color-surface: #181c24;
-  --color-text: #e9ebf0;
-  --color-text-soft: #aeb6c2;
-  --color-muted: #7c8491;
-  --color-faint: #4a5160;
-  --color-border: rgba(255, 255, 255, 0.14);
-  --color-border-strong: #ffffff;
-  --color-link: #c8cfdb;
-  --color-accent: #6fb5ff;
-  --color-accent-strong: #4f94ff;
-  --color-hover-bg: #2a313f;
-  --color-overlay: rgba(0, 0, 0, 0.92);
-  --color-screen-fade: #10131a;
-  --shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
-  --shimmer-a: #dcdcdc;
-  --shimmer-b: #c0c0c0;
-}
-
-/* --- Light theme --- */
-html[data-theme='light'] {
-  --color-bg: #f6f7f9;
-  --color-surface: #ffffff;
-  --color-text: #1b2029;
-  --color-text-soft: #505a66;
-  --color-muted: #6b7480;
-  --color-faint: #9aa2ac;
-  --color-border: rgba(0, 0, 0, 0.12);
-  --color-border-strong: #14161b;
-  --color-link: #3f4854;
-  --color-accent: #2f6bff;
-  --color-accent-strong: #1f56d8;
-  --color-hover-bg: #e8eaf0;
-  --color-overlay: rgba(255, 255, 255, 0.94);
-  --color-screen-fade: #f6f7f9;
-  --shadow: 0 4px 28px rgba(15, 23, 42, 0.18);
-  --shimmer-a: #e8e8ee;
-  --shimmer-b: #d4d4dc;
-}
-
-/* White-filled SVGs (arrows, icons) need inverting on light backgrounds. */
-html[data-theme='light'] .back-button,
-html[data-theme='light'] .button-icon,
-html[data-theme='light'] .link-images,
-html[data-theme='light'] .back-to-top img {
-  filter: invert(1);
-}
-
 html {
-  font-family:
-    'Quicksand',
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: var(--font-body);
   font-size: 16px;
   font-synthesis: none;
   word-spacing: 1px;
@@ -80,7 +24,6 @@ html {
   box-sizing: border-box;
   color: var(--color-text);
   background: var(--color-bg);
-  scroll-behavior: smooth;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
@@ -101,61 +44,88 @@ a:hover {
   color: var(--color-accent);
 }
 
-.section {
-  padding: 100px 170px;
-  max-width: 1264px;
-  margin: 0 auto;
-  line-height: 1.65;
+/* --- Base type scale -------------------------------------- */
+.mono {
+  font-family: var(--font-mono);
 }
 
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
+}
+
+/* --- Shared layout / sections ----------------------------- */
+.section {
+  max-width: 1120px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.section-inner {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* --- Titles ------------------------------------------------ */
 .title {
-  font-family:
-    'Quicksand',
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: var(--font-display);
   display: block;
-  font-weight: 700;
-  font-size: 40px;
-  letter-spacing: -0.01em;
+  font-weight: 500;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  letter-spacing: -0.02em;
   text-wrap: balance;
   color: var(--color-text);
-  margin-bottom: 14px;
 }
 
 .subtitle {
+  font-family: var(--font-display);
   font-weight: 400;
-  font-size: 24px;
+  font-size: 1.35rem;
   font-feature-settings: 'kern';
-  letter-spacing: 0.01em;
+  letter-spacing: 0.005em;
   text-wrap: balance;
   color: var(--color-text-soft);
-  margin-bottom: 12px;
 }
 
+/* --- Buttons ------------------------------------------------ */
 .button {
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--color-border-strong);
   text-decoration: none;
   cursor: pointer;
-  padding: 10px 18px;
+  padding: 11px 20px;
   width: max-content;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 500;
   color: var(--color-text);
   background: transparent;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .button:hover {
   background-color: var(--color-hover-bg);
+  color: var(--color-accent);
+}
+
+.button--primary {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 600;
+}
+
+.button--primary:hover {
+  background-color: var(--color-accent-strong);
+  border-color: var(--color-accent-strong);
+  color: var(--color-on-accent);
 }
 
 /* Visible focus ring for keyboard users on every interactive element. */
@@ -170,20 +140,16 @@ button,
   touch-action: manipulation;
 }
 
-@media (max-width: 960px) {
-  .section {
-    padding: 80px 40px;
-  }
-
-  .title {
-    font-size: 32px;
-  }
-
-  .subtitle {
-    font-size: 20px;
-  }
+/* White-filled SVGs (arrows, icons, brand/tech marks) are authored for dark
+   backgrounds; they need inverting to stay visible on light backgrounds. */
+html[data-theme='light'] .back-to-top img,
+html[data-theme='light'] .button-icon,
+html[data-theme='light'] .link-images,
+html[data-theme='light'] .tech-chip img {
+  filter: var(--icon-filter);
 }
 
+/* --- Motion --------------------------------------------------- */
 .appear {
   animation: 1s appear;
 }

@@ -61,4 +61,12 @@ onMounted(() => {
 .theme-toggle:hover {
   color: var(--color-accent);
 }
+
+/* On mobile the fixed top nav bar occupies the top-right corner;
+   drop the toggle just below it to avoid overlap. */
+@media (max-width: 900px) {
+  .theme-toggle {
+    top: 70px;
+  }
+}
 </style>

@@ -3,7 +3,9 @@
     <ThemeToggle />
     <slot />
     <footer class="footer">
-      Jonathan Prasetya Wijaya • {{ year }}
+      <p class="footer-name">
+        Jonathan Prasetya Wijaya • {{ year }}
+      </p>
     </footer>
     <BackToTop />
   </div>
@@ -15,9 +17,13 @@ const year = new Date().getFullYear()
 
 <style scoped>
 .footer {
-  padding: 50px 80px;
   text-align: center;
-  font-weight: 700;
+  padding: 56px 24px 88px;
+}
+
+.footer-name {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
   color: var(--color-text-soft);
 }
 </style>

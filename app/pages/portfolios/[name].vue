@@ -3,15 +3,21 @@
     v-if="portfolio"
     class="portfolio-detail"
   >
-    <section class="section appear">
-      <img
-        src="/arrow-left.svg"
-        alt="Back"
-        height="30"
-        width="30"
+    <section class="section detail appear">
+      <a
         class="back-button"
-        @click="goBack"
+        href="#"
+        @click.prevent="goBack"
       >
+        <img
+          src="/arrow-left.svg"
+          alt=""
+          height="16"
+          width="16"
+          class="button-icon"
+        >
+        <span>Back</span>
+      </a>
       <h1 class="portfolio-heading">
         <a
           v-if="portfolio.href"
@@ -260,22 +266,45 @@ function toggleGroup (groupIndex: number) {
 </script>
 
 <style scoped>
+.detail {
+  padding: 96px 0;
+}
+
 .back-button {
-  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+  text-decoration: none;
+}
+
+.back-button:hover {
+  color: var(--color-accent);
 }
 
 .portfolio-heading {
   text-align: center;
+  font-family: var(--font-display);
   font-weight: 500;
-  margin-bottom: 10px;
+  font-size: 2.6rem;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 40px 0 8px;
 }
 
 .portfolio-subtitle {
-  font-size: 20px;
+  font-size: 1.05rem;
+  max-width: 56ch;
+  text-align: center;
+  color: var(--color-text-soft);
+  margin: 0 auto 20px;
 }
 
 .privacy-note {
   text-align: center;
+  color: var(--color-text-soft);
   padding: 30px 0;
 }
 
@@ -284,7 +313,9 @@ function toggleGroup (groupIndex: number) {
 }
 
 .screenshot-title {
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-accent);
   margin-bottom: 10px;
 }
 
@@ -338,8 +369,8 @@ function toggleGroup (groupIndex: number) {
 }
 
 @media (max-width: 600px) {
-  .section {
-    padding: 40px;
+  .detail {
+    padding: 40px 0;
   }
 
   .col-2,
