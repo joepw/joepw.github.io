@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint'],
 
   // Global CSS loaded for every page
-  css: ['~/assets/css/main.css', '~/assets/themes/brittany-vibe.css'],
+  css: ['~/assets/css/main.css', '~/assets/themes/editorial-green.css'],
 
   // GitHub Pages requires URLs to be served from the repo root.
   // No baseURL is set because the site is deployed at https://joepw.github.io.
