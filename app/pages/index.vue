@@ -685,6 +685,16 @@ const experiences = [
     grid-template-columns: 1fr;
   }
 
+  .about-facts {
+    align-items: center;
+    text-align: center;
+  }
+
+  .fact-list {
+    width: 100%;
+    max-width: 320px;
+  }
+
   .exp-row {
     grid-template-columns: 1fr;
     gap: 12px;

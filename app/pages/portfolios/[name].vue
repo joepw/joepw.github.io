@@ -267,7 +267,13 @@ function toggleGroup (groupIndex: number) {
 
 <style scoped>
 .detail {
-  padding: 96px 0;
+  padding: 96px 64px;
+}
+
+@media (max-width: 900px) {
+  .detail {
+    padding: 72px 24px;
+  }
 }
 
 .back-button {
@@ -369,10 +375,6 @@ function toggleGroup (groupIndex: number) {
 }
 
 @media (max-width: 600px) {
-  .detail {
-    padding: 40px 0;
-  }
-
   .col-2,
   .col-3 {
     flex: 1 1 100%;

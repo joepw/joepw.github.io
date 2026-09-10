@@ -5,7 +5,9 @@
 > by side and switched with a single `git checkout`.
 >
 > **Base branch:** `redesign-nuxt4` (clean tip `062368f`, working tree clean).
-> **Status:** In progress — documentation created first, then branches built in order.
+> **Status:** 4 original directions done; a 5th community-pick branch
+> (`design/editorial-green`) now exists — see progress log. Documentation is
+> updated per branch as each is built & verified.
 
 ---
 
@@ -67,6 +69,7 @@ the redesigned UI is split into two layers:
 | `design/warm-minimal` | **Warm & minimal** — warm paper light default, deep ink, terracotta accent | light | calm editorial type, generous whitespace; dark = warm "dim" mode |
 | `design/color-block` | **High-contrast color-block** — bold, geometric accent-driven blocks | dark | louder personality; mono/bold display, colored cards |
 | `design/brittany-vibe` | **Modernized brittanychiang** — near-black + mint/green accent | dark | single clean sans (Inter-style) + mono eyebrows, code-like headers, left nav rail |
+| `design/editorial-green` | **Editorial-green / community pick** — editorial-mono typography + brittany-vibe green | dark | Space Grotesk + JetBrains Mono; mint/green accent; roomier paragraph rhythm |
 
 ---
 
@@ -158,14 +161,25 @@ Shared structure + theme built and verified (`lint` clean, `generate` prerenders
   - `nuxt.config.ts` `css` loads `main.css` + `color-block.css`; doc updated in same commit.
   - Verified: `lint` clean, `generate` clean.
 
-### 🔄 `design/brittany-vibe` — IN PROGRESS
+### ✅ `design/brittany-vibe` — DONE (commits on branch)
 
-- Branch created from `redesign-nuxt4`; shared structure cherry-picked (`5337e32`); stale doc update staged (architecture note + editorial-mono log).
-- Theme written (`app/assets/themes/brittany-vibe.css`):
+- Branch created from `redesign-nuxt4`; shared structure cherry-picked (`5337e32`).
+- `f542bb6` — **brittany-vibe theme** (`app/assets/themes/brittany-vibe.css`):
   - Fonts: **Inter** (clean sans, display+body) + **JetBrains Mono** (meta) via Google Fonts `@import`.
   - Dark (default): near-black `#0d0f14`, mint accent `#6ee7a0`; light: pale slate `#f5f7fa`, green accent `#24b866`.
   - Code-kit presentation overrides (tabular section indexes, hairline rules, calm spacing, hover-tint experience rows, mono footer signature).
   - `nuxt.config.ts` `css` loads `main.css` + `brittany-vibe.css`.
-- **Bug found & fixed:** `.work-link` had `color: var(--color-accent)` on a `button--primary` (whose background is already the accent) → mint-on-mint, invisible in both themes. Removed the color override so it inherits `--color-on-accent`.
+- **Bug fixed:** `.work-link` had `color: var(--color-accent)` on a `button--primary` (whose background is already the accent) → mint-on-mint, invisible in both themes. Removed the color override so it inherits `--color-on-accent`.
 - Verified: `lint` clean, `generate` prerenders 14 routes; routes `/`, `/portfolios/topads|mymovo|blinkgoo|sikomo|sikomo-dashboard/` return 200, theme pre-paint script intact, Inter reachable (HTTP 200).
-- **Remaining:** update this doc, commit theme + config + doc.
+
+### ✅ `design/editorial-green` — DONE (commits on branch, community pick)
+
+- Branch created from `design/brittany-vibe`; keeps its shared structure, swaps in a new single theme file (`app/assets/themes/editorial-green.css`, `brittany-vibe.css` removed).
+- `08eebb7` — **editorial-green theme**:
+  - Typography from editorial-mono: Space Grotesk display + JetBrains Mono labels + system body (identical stacks dark/light).
+  - Green from brittany-vibe: dark mint `#6ee7a0` / light green `#1da862`, matching `accent-strong`/`accent-soft`/`on-accent`.
+  - Paragraph rhythm: `line-height: 1.8` on hero-intro/about/experience/work copy; `62ch` measure on exp/work descs.
+- `3c4efb1` — neutral ramp aligned to brittany-vibe for brighter dark-mode text (`#eef1f6` etc.); greens untouched.
+- Responsive polish (shared-structure fix, applies to every branch on merge):
+  - Mobile About aside centered (photo + fact rows) with `320px` capped fact list — reads as an intentional profile card instead of a left-floating fragment.
+  - Portfolio detail gutters at every width (`96px 64px` desktop / `72px 24px` ≤900px, mirroring index) — content no longer touches viewport edges.
