@@ -40,7 +40,9 @@ the redesigned UI is split into two layers:
   - Footer signature, BackToTop, mobile behavior.
   - Content/data, routes, lightbox logic: **untouched**.
 - **Per-branch theme layer** (`app/themes/<name>.css`):
-  - Color + typography tokens **only**, plus any direction-specific quirks.
+  - Color + typography tokens **plus per-direction presentation overrides**
+    (spacing, scale, borders, treatment) so each branch reads as a genuinely
+    distinct design, not just a recolour.
   - Lightbox / ThemeToggle / icons keep working automatically because they read the
     same CSS custom properties.
 
@@ -48,6 +50,12 @@ the redesigned UI is split into two layers:
 > direction 1 and direction 4?" review to a small diff, and keeps branching cheap.
 > Structural templates/components are created once on the first theme branch and
 > carried through the rest (same files, no conflicts).
+>
+> **Note (2026-09-10):** the theme layer is *not* token-only. Earlier on, the four
+> branches differed almost entirely by palette + typeface (identical structure),
+> which read as reskins rather than distinct directions. Decided: each theme file
+> carries real structural overrides so warm-minimal (airy editorial), color-block
+> (loud geometry) and brittany-vibe (code-kit) each get their own personality.
 
 ---
 
@@ -109,4 +117,55 @@ git checkout -b design/brittany-vibe    # shared skeleton + brittany-vibe theme 
 - Documented the four-branch approach (this file) before building.
 - Branch build order: `editorial-mono` -> `warm-minimal` -> `color-block` -> `brittany-vibe`.
 
-### To be updated per branch as each is built & verified.
+### ✅ `design/editorial-mono` — DONE (commits on branch)
+
+Shared structure + theme built and verified (`lint` clean, `generate` prerenders 14 routes, routes 200 via `serve`).
+
+- `8cd6dab` — **shared UI structure** (identical across all four branches):
+  - Sticky left `SiteNav` rail with numbered section links (`01–04`) + `IntersectionObserver` scroll-spy; collapses to a top bar + menu on `≤900px`.
+  - New hero (eyebrow + name + role + intro + primary/secondary CTAs + social icons).
+  - About (copy + quick-facts aside w/ photo), two-column Experience rows, 3-col Skills cards, Selected Work cards.
+  - Portfolio detail page re-themed (back button, headings, captions, PhotoSwipe caption bar).
+  - Footer reverted to "name • year".
+  - **Portfolio entry points fixed**: cover image is now a link + persistent "See More →" button (was hover-only overlay, undiscoverable on touch).
+  - **mymovo** (no cover / privacy): cover + "See More" hidden; card goes full-width; no infinite shimmer.
+  - `app/utils/scroll.ts` — JS-driven smooth scroll (`scrollIntoView`) used by hero buttons + nav links, so global `scroll-behavior` is NOT set → back-navigation restores scroll position instantly. Respects `prefers-reduced-motion`.
+  - ThemeToggle moved down on mobile so it doesn't overlap the top nav.
+- `163c3b7` — **editorial-mono theme** (`app/assets/themes/editorial-mono.css`):
+  - Fonts: Space Grotesk (display) + JetBrains Mono (labels/meta) via Google Fonts `@import`; system sans for body.
+  - Dark (default): near-black warm ink `#0c0b0a`, coral accent `#ff8a3c`.
+  - Light: warm paper `#f6f3ee`, terracotta accent `#ef7a2e`, `--color-on-accent` for button text contrast.
+  - Light-mode fixes: `.tech-chip img` inverted (tech SVGs are white-filled), tightened `--color-on-accent`, `.button--primary` weight `600`.
+  - `nuxt.config.ts` `css` loads `main.css` then the theme file.
+
+### ✅ `design/warm-minimal` — DONE (commits on branch)
+
+- Branch created from `redesign-nuxt4`; shared structure cherry-picked (`273b466`); doc update committed (`ccea51c`).
+- `6123557` — doc update: warm-minimal theme (light-first, Fraunces/IBM Plex Mono), icon-filter bug fix, per-direction overrides decision.
+- `99847d7` — **warm-minimal theme** (`app/assets/themes/warm-minimal.css`):
+  - Fonts: **Fraunces** (warm editorial serif, display+body) + **IBM Plex Mono** (meta) via Google Fonts `@import`.
+  - **Light-first default**: `nuxt.config.ts` pre-paint script fallback flipped to light (OS dark preference still respected); light = warm paper `#f6f1e8`, deep ink, terracotta accent `#c8672e`; dark = warm "dim" `#1c1a17`.
+  - `nuxt.config.ts` `css` loads `main.css` + `warm-minimal.css`.
+  - Airy editorial presentation overrides (generous whitespace, wider leading, hairlines, serif-led voice).
+- **Bug fixed:** tech icons invisible in light mode — `--icon-filter` values were swapped (light had `none`). Correct contract is shared rule `html[data-theme='light'] … { filter: var(--icon-filter) }`, so **light = `invert(1)`, dark = `none`**.
+
+### ✅ `design/color-block` — DONE (commits on branch)
+
+- Branch created from `redesign-nuxt4`; shared structure carried over (`11ddbe9`).
+- `65e1c96` — **color-block theme** (`app/assets/themes/color-block.css`):
+  - Fonts: **Archivo** heavy display + **Space Mono** via Google Fonts `@import`.
+  - Bold geometry: accent index tiles on section headings, thick frames on cards, loud personality.
+  - `nuxt.config.ts` `css` loads `main.css` + `color-block.css`; doc updated in same commit.
+  - Verified: `lint` clean, `generate` clean.
+
+### 🔄 `design/brittany-vibe` — IN PROGRESS
+
+- Branch created from `redesign-nuxt4`; shared structure cherry-picked (`5337e32`); stale doc update staged (architecture note + editorial-mono log).
+- Theme written (`app/assets/themes/brittany-vibe.css`):
+  - Fonts: **Inter** (clean sans, display+body) + **JetBrains Mono** (meta) via Google Fonts `@import`.
+  - Dark (default): near-black `#0d0f14`, mint accent `#6ee7a0`; light: pale slate `#f5f7fa`, green accent `#24b866`.
+  - Code-kit presentation overrides (tabular section indexes, hairline rules, calm spacing, hover-tint experience rows, mono footer signature).
+  - `nuxt.config.ts` `css` loads `main.css` + `brittany-vibe.css`.
+- **Bug found & fixed:** `.work-link` had `color: var(--color-accent)` on a `button--primary` (whose background is already the accent) → mint-on-mint, invisible in both themes. Removed the color override so it inherits `--color-on-accent`.
+- Verified: `lint` clean, `generate` prerenders 14 routes; routes `/`, `/portfolios/topads|mymovo|blinkgoo|sikomo|sikomo-dashboard/` return 200, theme pre-paint script intact, Inter reachable (HTTP 200).
+- **Remaining:** update this doc, commit theme + config + doc.

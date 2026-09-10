@@ -1,0 +1,180 @@
+/* ============================================================
+   THEME: brittany-vibe
+   Direction 4/4 — modernized brittanychiang feel: a single clean
+   sans (Inter) + mono eyebrows, near-black with a mint accent,
+   hairline separators and code-kit headers.
+
+   Defines tokens + presentation overrides. Loaded AFTER main.css.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0..1,14..32,100..900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* --- Dark theme (default) --- */
+:root,
+html[data-theme='dark'] {
+  color-scheme: dark;
+
+  --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --color-bg: #0d0f14;
+  --color-surface: #161a22;
+  --color-surface-2: #1e242e;
+  --color-text: #eef1f6;
+  --color-text-soft: #b9c0cc;
+  --color-muted: #8590a0;
+  --color-faint: #4e5866;
+  --color-border: rgba(169, 178, 191, 0.16);
+  --color-border-strong: #2c3645;
+  --color-link: #eef1f6;
+  --color-accent: #6ee7a0;
+  --color-accent-strong: #3ecf84;
+  --color-accent-soft: rgba(110, 231, 160, 0.14);
+  --color-on-accent: #062e15;
+  --color-hover-bg: #202733;
+  --color-overlay: rgba(0, 0, 0, 0.9);
+  --color-screen-fade: #0d0f14;
+  --shadow: 0 6px 30px rgba(0, 0, 0, 0.55);
+  --shimmer-a: #232b36;
+  --shimmer-b: #161a22;
+  --icon-filter: none;
+}
+
+/* --- Light theme --- */
+html[data-theme='light'] {
+  color-scheme: light;
+
+  --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --color-bg: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #eceff4;
+  --color-text: #1e2530;
+  --color-text-soft: #515c6b;
+  --color-muted: #7c8797;
+  --color-faint: #aeb6c2;
+  --color-border: rgba(30, 37, 48, 0.13);
+  --color-border-strong: #272f3a;
+  --color-link: #1e2530;
+  --color-accent: #24b866;
+  --color-accent-strong: #1c984f;
+  --color-accent-soft: rgba(36, 184, 102, 0.14);
+  --color-on-accent: #f2fdf6;
+  --color-hover-bg: #eceff4;
+  --color-overlay: rgba(255, 255, 255, 0.92);
+  --color-screen-fade: #f5f7fa;
+  --shadow: 0 6px 30px rgba(30, 37, 48, 0.16);
+  --shimmer-a: #eceff4;
+  --shimmer-b: #dfe3ea;
+  --icon-filter: invert(1);
+}
+
+/* ============================================================================
+   Direction-specific presentation — BRITTANY-VIBE personality
+   Near-black canvas, mint accent, single clean sans with mono eyebrows.
+   Tabular section indexes, hairline rules, calm spacing.
+   ============================================================================ */
+
+.section {
+  padding: 104px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.section-heading {
+  gap: 18px;
+  margin-bottom: 52px;
+}
+
+.section-heading .eyebrow {
+  min-width: 44px;
+}
+
+.section-title-title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: -0.015em;
+}
+
+.hero-name {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+}
+
+.hero-role {
+  font-weight: 500;
+  max-width: 36ch;
+}
+
+.hero-intro {
+  line-height: 1.75;
+}
+
+.exp-row {
+  padding: 30px 18px;
+  margin: 0 -18px;
+  border-radius: 8px;
+}
+
+.exp-row:hover {
+  background: var(--color-hover-bg);
+}
+
+.exp-company {
+  font-weight: 600;
+}
+
+.skill-card {
+  border-radius: 8px;
+  padding: 26px 24px;
+}
+
+.work-card {
+  border-radius: 10px;
+  padding: 32px;
+  gap: 40px;
+}
+
+.work-card:hover {
+  border-color: var(--color-border-strong);
+}
+
+.work-name {
+  font-weight: 600;
+}
+
+.tech-chip {
+  border-radius: 20px;
+}
+
+.work-link {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.nav-brand-mark {
+  border-color: var(--color-accent);
+}
+
+.footer-name {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 84px 0;
+  }
+
+  .exp-row {
+    margin: 0;
+    padding: 24px 0;
+  }
+
+  .work-card {
+    padding: 24px;
+  }
+}
